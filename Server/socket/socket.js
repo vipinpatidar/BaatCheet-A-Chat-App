@@ -43,13 +43,16 @@ const initializeSocketIO = (io) => {
   return io.on("connection", async (socket) => {
     try {
       // parse the cookies from the handshake headers (This is only possible if client has `withCredentials: true`)
+      // console.log(socket.handshake.auth?.token);
       const cookies = socket.handshake.headers?.cookie || "";
 
-      let token = cookies.split("=")[1]; // get the accessToken
+      let token = cookies?.split("=")[1]; // get the accessToken
 
       if (!token) {
         // If there is no access token in cookies. Check inside the handshake auth
-        token = socket.handshake.auth?.token;
+        token =
+          socket.handshake.headers?.authorization ||
+          socket.handshake.auth?.token;
       }
 
       if (!token) {

@@ -20,6 +20,9 @@ const UserContextProvider = ({ children }) => {
   const [id, setId] = useState(
     JSON.parse(localStorage.getItem("userInfo"))?.userId || null
   );
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("userInfo"))?.token || null
+  );
 
   const navigate = useNavigate();
 
@@ -42,6 +45,8 @@ const UserContextProvider = ({ children }) => {
     context = {
       ...loggedInUser,
       setId,
+      keyAccess: token,
+      setKeyAccess: setToken,
     };
   }
 

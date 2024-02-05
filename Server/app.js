@@ -21,7 +21,10 @@ const port = process.env.PORT || 8080;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://baatcheet-chatapp-vipin.netlify.app",
+    ],
     credentials: true,
   })
 );
@@ -30,7 +33,10 @@ app.use(
 const io = new Server(httpServer, {
   pingTimeout: 50000,
   cors: {
-    origin: "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://baatcheet-chatapp-vipin.netlify.app",
+    ],
     credentials: true,
   },
 });

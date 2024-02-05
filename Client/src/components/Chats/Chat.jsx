@@ -146,11 +146,16 @@ const Chat = ({ user, bg, color }) => {
     }
   };
 
+  // console.log(user.keyAccess);
+
   /*================ SOCKET CONNECTION ================= */
 
   useEffect(() => {
     socket = io(ENDPOINT, {
       withCredentials: true,
+      extraHeaders: {
+        Authorization: `${user?.keyAccess}`,
+      },
     });
     socket.on("connected", () => setSocketConnected(true));
     socket.on("disconnect", () => setSocketConnected(false));
