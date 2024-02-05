@@ -97,6 +97,7 @@ const deleteCascadeChatMessages = async (chatId) => {
 
 export const getAllChats = asyncHandler(async (req, res, next) => {
   try {
+    // console.log(req.userId);
     const chats = await Chat.aggregate([
       {
         $match: {

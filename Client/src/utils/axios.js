@@ -15,6 +15,7 @@ const getToken = () => {
 
   return null;
 };
+// console.log(getToken());
 
 // Create a function to make requests with the Authorization header
 export const token = () => {
@@ -38,4 +39,5 @@ export const makeRequest = axios.create({
   baseURL: `${import.meta.env.VITE_ENDPOINT}/api/v1`,
   withCredentials: true,
   headers: token(),
+  signal: new AbortController().signal,
 });

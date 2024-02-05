@@ -41,6 +41,8 @@ const MyChats = ({ user, bg, color }) => {
     },
   });
 
+  // console.log(user?.keyAccess, user?.name);
+
   useEffect(() => {
     if (error?.response?.status === 403) {
       navigate("/");
@@ -49,7 +51,7 @@ const MyChats = ({ user, bg, color }) => {
       window.location.href = "/";
     }
     //eslint-disable-next-line
-  }, [error, user?.setId]);
+  }, [error]);
 
   /*================ Delete Chat ================= */
 
