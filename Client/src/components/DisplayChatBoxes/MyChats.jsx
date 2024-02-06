@@ -236,7 +236,7 @@ const MyChats = ({ user, bg, color }) => {
                       alignItems={"center"}
                       fontSize={14}
                       justifyContent={"center"}
-                      mr={"16px"}
+                      mr={"0px"}
                       ml={"auto"}
                     >
                       {unreadMessages.filter((meg) => meg.chat._id === chat._id)

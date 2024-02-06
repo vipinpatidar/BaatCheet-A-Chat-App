@@ -15,9 +15,9 @@ const mountJoinChatEvent = (socket) => {
 const mountSendNewMessageEvent = (socket) => {
   socket.on("newMessageEvent", (newMessage) => {
     let chat = newMessage.chat; // which chat or room a message belongs to
-    //  console.log(newMessage);
     if (!chat.users) return console.log("chat.users not defined"); // if there is no users in chat return
 
+    // console.log(newMessage);
     // if a user sending message then we want to send message to all other users not who is sending it
 
     chat.users.forEach((user) => {
@@ -43,17 +43,10 @@ const initializeSocketIO = (io) => {
   return io.on("connection", async (socket) => {
     try {
       // parse the cookies from the handshake headers (This is only possible if client has `withCredentials: true`)
-      // console.log(socket.handshake.auth?.token);
-      const cookies = socket.handshake.headers?.cookie || "";
 
-      let token = cookies?.split("=")[1]; // get the accessToken
+      let token = socket.handshake.headers?.authorization; // get the accessToken
 
-      if (!token) {
-        // If there is no access token in cookies. Check inside the handshake auth
-        token =
-          socket.handshake.headers?.authorization ||
-          socket.handshake.auth?.token;
-      }
+      // console.log(token, "token");
 
       if (!token) {
         // Token is required for the socket to work
