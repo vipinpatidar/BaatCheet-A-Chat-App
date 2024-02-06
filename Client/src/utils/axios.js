@@ -1,5 +1,7 @@
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 // Create a function to retrieve the token from sessionStorage
 const getToken = () => {
   const persistedState = localStorage.getItem("userInfo");
