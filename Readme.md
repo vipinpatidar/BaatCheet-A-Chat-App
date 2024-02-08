@@ -2,6 +2,10 @@
 
 BaatCheet is a full-stack MERN (MongoDB, Express.js, React, Node.js) chat application that allows users to search for other users, text them individually, create groups, and engage in group chats. The frontend is built with Vite React, providing a fast and modern user interface. The app supports features like blocking/unblocking users, message deletion, sending images, and toggling between dark and light modes.
 
+# Live preview
+
+BaatCheet: https://baatcheet-chatapp-vipin.netlify.app
+
 ## Features
 
 - User Search: Find and connect with other users.

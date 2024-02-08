@@ -27,8 +27,13 @@ const HomePage = () => {
         borderRadius={"lg"}
         p={3}
       >
-        <Text fontSize={"3xl"} fontFamily={"Work sans"} color={color}>
-          BAATE
+        <Text
+          fontSize={"2xl"}
+          fontFamily={"Work sans"}
+          color={color}
+          textTransform={"uppercase"}
+        >
+          BaatCheet
         </Text>
       </Box>
 

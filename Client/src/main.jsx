@@ -20,8 +20,11 @@ import {
 
 const { ToastContainer, toast } = createStandaloneToast();
 
+const themePreference = () =>
+  window.matchMedia("(prefers-color-scheme: dark)").matches;
+
 const config = {
-  initialColorMode: "dark",
+  initialColorMode: themePreference() ? "dark" : "light",
   useSystemColorMode: false,
 };
 
