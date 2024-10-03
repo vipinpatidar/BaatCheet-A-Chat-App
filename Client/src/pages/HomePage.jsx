@@ -62,10 +62,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-/*
- const { colorMode, toggleColorMode } = useColorMode();
- <Button onClick={toggleColorMode}>
-        Toggle {colorMode === "light" ? "Dark" : "Light"}
-      </Button>
- */

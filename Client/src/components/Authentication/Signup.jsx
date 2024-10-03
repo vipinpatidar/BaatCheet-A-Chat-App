@@ -56,7 +56,7 @@ const Signup = () => {
       if (res.data) {
         toast({
           title: "Account created successfully.",
-          description: "Enjoy chatting with Baate.",
+          description: "Enjoy chatting with Baatcheet.",
           status: "success",
           duration: 5000,
           isClosable: true,
@@ -66,7 +66,7 @@ const Signup = () => {
         ctx.setId(res.data.userId);
 
         navigate("/chats", { replace: true });
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -141,6 +141,7 @@ const Signup = () => {
           })
           .catch((error) => {
             console.log(error);
+            throw error;
           });
       } else {
         userData = {
@@ -155,7 +156,7 @@ const Signup = () => {
     } catch (error) {
       toast({
         title: "Error Occured!",
-        description: "Something went wrong",
+        description: error?.message || "Something went wrong",
         status: "error",
         duration: 4000,
         isClosable: true,

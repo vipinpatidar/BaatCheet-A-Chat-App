@@ -12,6 +12,7 @@ import {
 import { useState } from "react";
 import { makeRequest } from "../../utils/axios";
 import { UserState } from "../../context/userContext";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
@@ -24,6 +25,8 @@ const Login = () => {
   const toast = useToast();
 
   const ctx = UserState();
+
+  const navigate = useNavigate();
 
   /*==================== INPUT HANDLER ====================== */
 
@@ -85,9 +88,11 @@ const Login = () => {
         });
         localStorage.setItem("userInfo", JSON.stringify(res.data));
         ctx?.setId(res.data.userId);
-        // navigate("/chats", { replace: true });
-        window.location.href = "/chats";
-        window.history.replaceState({}, "", "/chats");
+
+        navigate("/chats", { replace: true });
+
+        // window.location.href = "/chats";
+        // window.history.replaceState({}, "", "/chats");
       }
     } catch (error) {
       console.log(error);

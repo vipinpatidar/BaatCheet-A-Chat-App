@@ -72,16 +72,15 @@ const UpdateProfileModal = ({ children, user }) => {
       });
     },
     onSuccess: () => {
-      if (inputs.password !== "") {
-        toast({
-          title: "password changed.",
-          description: "Your password changed successfully.",
-          status: "success",
-          duration: 4000,
-          isClosable: true,
-          position: "top",
-        });
-      }
+      toast({
+        title: "Profile Updated",
+        description: "Your profile has been updated successfully.",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top",
+      });
+
       queryClient.invalidateQueries({
         queryKey: ["user", user._id],
       });
@@ -216,6 +215,7 @@ const UpdateProfileModal = ({ children, user }) => {
                     name="password"
                     onChange={inputsChangeHandler}
                     value={inputs.password}
+                    disabled={user._id === "65c108f11f93905491d60e66"}
                   />
                   <InputRightElement w={"4.5rem"}>
                     <Button

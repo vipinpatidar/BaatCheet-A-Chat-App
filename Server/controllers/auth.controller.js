@@ -25,7 +25,7 @@ export const postSignUpUser = asyncHandler(async (req, res, next) => {
 
   let createData;
 
-  console.log(image);
+  // console.log(image);
 
   if (image) {
     createData = {

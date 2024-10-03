@@ -19,6 +19,7 @@ const app = express();
 const httpServer = createServer(app);
 const port = process.env.PORT || 8080;
 
+//Middlewares
 app.use(
   cors({
     origin: [

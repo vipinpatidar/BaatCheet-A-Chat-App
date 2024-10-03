@@ -5,7 +5,7 @@ export const notFoundHandler = (req, res, next) => {
 };
 
 export const errorHandler = (error, req, res, next) => {
-  const statusCode = res.statusCode ? res.statusCode : 500;
+  const statusCode = error.status || 500;
   // console.error(error);
   res.status(statusCode);
 

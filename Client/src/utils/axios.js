@@ -18,7 +18,7 @@ const getToken = () => {
   return null;
 };
 // console.log(getToken());
-
+/*
 // Create a function to make requests with the Authorization header
 export const token = () => {
   const tokenValue = getToken();
@@ -35,11 +35,31 @@ export const token = () => {
   return headers;
 };
 
+*/
+
 // console.log(token());
 
 export const makeRequest = axios.create({
   baseURL: `${import.meta.env.VITE_ENDPOINT}/api/v1`,
   withCredentials: true,
-  headers: token(),
+  // headers: token(),
   signal: new AbortController().signal,
 });
+
+makeRequest.interceptors.request.use(
+  (config) => {
+    const token = getToken();
+
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+
+    config.headers["Content-Type"] = "application/json";
+
+    return config;
+  },
+
+  (error) => {
+    return Promise.reject(error);
+  }
+);

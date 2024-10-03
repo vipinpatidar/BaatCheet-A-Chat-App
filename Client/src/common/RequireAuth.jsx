@@ -22,7 +22,7 @@ const RequireAuth = ({ children }) => {
   // Check if user information is still being loaded
 
   // Check if user is authenticated
-  if (!id) {
+  if (!id && !user) {
     return <Navigate to={"/"} replace state={{ path: location.pathname }} />;
   }
 

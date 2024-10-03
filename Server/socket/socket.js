@@ -1,5 +1,4 @@
 import jwt from "jsonwebtoken";
-import { Server, Socket } from "socket.io";
 import { User } from "../models/user.model.js";
 
 const mountJoinChatEvent = (socket) => {
@@ -15,7 +14,7 @@ const mountJoinChatEvent = (socket) => {
 const mountSendNewMessageEvent = (socket) => {
   socket.on("newMessageEvent", (newMessage) => {
     let chat = newMessage.chat; // which chat or room a message belongs to
-    if (!chat.users) return console.log("chat.users not defined"); // if there is no users in chat return
+    if (!chat?.users) return console.log("chat.users not defined"); // if there is no users in chat return
 
     // console.log(newMessage);
     // if a user sending message then we want to send message to all other users not who is sending it
@@ -64,14 +63,14 @@ const initializeSocketIO = (io) => {
       if (!user) {
         throw new Error("Un-authorized handshake. Token is invalid");
       }
-      socket.user = user; // mount te user object to the socket
+      socket.user = user; // mount the user object to the socket
 
       // console.log(user);
 
       // We are creating a room with user id so that if user is joined but does not have any active chat going on.
       // still we want to emit some socket events to the user.
       // so that the client can catch the event and show the notifications.
-      socket.join(user._id.toString());
+      socket.join(user._id.toString()); //Adds the socket to the given room or to the list of rooms. ["room1", "room2", "room3"]
       socket.emit("connected"); // emit the connected event so that client is aware
       console.log("User connected 🗼. userId: ", user._id.toString());
 

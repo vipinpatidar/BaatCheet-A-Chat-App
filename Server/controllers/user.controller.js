@@ -80,7 +80,6 @@ export const putUpdateUserProfile = asyncHandler(async (req, res, next) => {
 
     if (password !== "") {
       user.password = password;
-      await user.save();
     }
 
     user.name = name;

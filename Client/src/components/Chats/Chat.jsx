@@ -68,7 +68,7 @@ const Chat = ({ user, bg, color }) => {
   /*================ SOCKET FUNC ================= */
 
   const onChatRemove = (chat) => {
-    // Check if the chat the user is leaving is the current active chat.
+    // Check if the user is removed form the current active chat.
 
     if (chat?._id === currentChat.current?._id) {
       // If the user is in the group chat they're leaving, close the chat window.
@@ -83,7 +83,7 @@ const Chat = ({ user, bg, color }) => {
   };
 
   const onChatLeave = (chat) => {
-    // Check if the chat the user is leaving is the current active chat.
+    // Check if  the user is leaving is the current active chat.
 
     // console.log(chat);
 
@@ -107,7 +107,7 @@ const Chat = ({ user, bg, color }) => {
 
   const onGroupNameChange = (chat) => {
     if (chat?._id === currentChat.current?._id) {
-      // If the user is in the group chat they're leaving, close the chat window.
+      // when group name is changed the selected chat should be updated
       setSelectedChat(chat);
     }
     queryClient.invalidateQueries({
@@ -127,14 +127,14 @@ const Chat = ({ user, bg, color }) => {
   };
 
   const handleReceivedMessage = (newMessage) => {
-    // if user already selected a chat then send notification. not send message in that selected chat
+    // if user already selected other chat then send notification. not send message in that selected chat
     if (
       !selectedChatCompare ||
       selectedChatCompare._id !== newMessage.chat._id
     ) {
       //! send notification
       if (!notifications.includes(newMessage)) {
-        console.log("notification");
+        // console.log("notification");
         setNotifications((prevState) => [newMessage, ...prevState]);
         queryClient.invalidateQueries({
           queryKey: ["chats"],
@@ -234,6 +234,7 @@ const Chat = ({ user, bg, color }) => {
       return makeRequest.post("/message/sendMessage", messageData);
     },
     onError: (error) => {
+      console.log(error);
       const errorMessage =
         error?.response?.data?.message || "Something went wrong.";
       toast({

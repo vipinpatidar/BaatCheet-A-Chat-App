@@ -70,13 +70,13 @@ const ScrollableChat = memo(function ScrollableChat({ messages, user }) {
 
   const deleteMessageHandler = (e, messageId, chatId) => {
     e.stopPropagation();
-    console.log("delete");
+    // console.log("delete");
     let latestMessageNow = null;
     if (messageId === messages[messages.length - 1]._id) {
       latestMessageNow = messages[messages.length - 2]?._id;
     }
 
-    console.log(latestMessageNow, "last message");
+    // console.log(latestMessageNow, "last message");
 
     mutate({
       messageId: messageId,

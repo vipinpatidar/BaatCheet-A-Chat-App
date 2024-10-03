@@ -615,7 +615,9 @@ export const deleteAChat = asyncHandler(async (req, res, next) => {
     isGroup === "true"
   ) {
     res.status(404);
-    throw new Error("Only admin can delete the group");
+    throw new Error(
+      "Only admin can delete the group chat but if you don't want to participate in group leave group chat"
+    );
   }
 
   // console.log(chat);
