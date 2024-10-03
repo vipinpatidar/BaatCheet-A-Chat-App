@@ -90,7 +90,7 @@ const Login = () => {
         ctx?.setId(res.data.userId);
 
         navigate("/chats", { replace: true });
-
+        window.location.reload();
         // window.location.href = "/chats";
         // window.history.replaceState({}, "", "/chats");
       }

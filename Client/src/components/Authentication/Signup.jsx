@@ -66,7 +66,7 @@ const Signup = () => {
         ctx.setId(res.data.userId);
 
         navigate("/chats", { replace: true });
-        // window.location.reload();
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
